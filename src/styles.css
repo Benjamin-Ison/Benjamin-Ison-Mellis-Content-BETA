@@ -1,0 +1,144 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-chat-in: var(--chat-in);
+  --color-chat-out: var(--chat-out);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.16 0.008 60);
+  --foreground: oklch(0.985 0 0);
+  --surface: oklch(0.215 0.01 60);
+  --surface-2: oklch(0.26 0.012 60);
+  --card: oklch(0.215 0.01 60);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.215 0.01 60);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.7 0.19 44);
+  --primary-foreground: oklch(0.16 0.01 60);
+  --secondary: oklch(0.26 0.012 60);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.26 0.012 60);
+  --muted-foreground: oklch(0.72 0.012 60);
+  --accent: oklch(0.7 0.19 44);
+  --accent-foreground: oklch(0.16 0.01 60);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.7 0.19 44);
+  --chat-in: oklch(0.28 0.012 60);
+  --chat-out: oklch(0.48 0.11 150);
+  --gradient-hero: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    oklch(0.45 0.16 44 / 0.45),
+    transparent 70%
+  );
+  --gradient-accent: linear-gradient(135deg, oklch(0.74 0.18 55), oklch(0.65 0.2 34));
+  --gradient-statement: radial-gradient(
+      ellipse 90% 120% at 50% 110%,
+      oklch(0.62 0.2 40 / 0.55),
+      transparent 65%
+    ),
+    linear-gradient(180deg, oklch(0.14 0.01 60), oklch(0.2 0.04 40));
+  --shadow-soft: 0 20px 50px -20px oklch(0 0 0 / 0.7);
+  --shadow-glow: 0 16px 44px -14px oklch(0.7 0.19 44 / 0.55);
+}
+
+@utility bg-hero-glow {
+  background-image: var(--gradient-hero);
+}
+
+@utility bg-accent-gradient {
+  background-image: var(--gradient-accent);
+}
+
+@utility bg-statement-gradient {
+  background-image: var(--gradient-statement);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-hover:hover .animate-marquee {
+  animation-play-state: paused;
+}
